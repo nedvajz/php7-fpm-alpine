@@ -1,5 +1,4 @@
 FROM php:7.1-fpm-alpine
-MAINTAINER Lubos Remplik <lubos@on-idle.com>
 
 # Dependencies
 RUN apk --no-cache --update add \
