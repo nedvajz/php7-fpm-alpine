@@ -1,4 +1,4 @@
-FROM php:7.1-fpm-alpine
+FROM php:7-fpm-alpine
 
 # Dependencies
 RUN apk --no-cache --update add \
