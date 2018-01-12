@@ -1,14 +1,18 @@
 FROM php:7.1-fpm-alpine
+MAINTAINER Lubos Remplik <lubos@on-idle.com>
 
-# Install dependencies
+# Dependencies
 RUN apk --no-cache --update add \
     icu-dev \
 	libxml2-dev \
 	freetype-dev \
 	libjpeg-turbo-dev \
-	libpng-dev
+	libpng-dev \
+	autoconf \
+	g++ \
+	make
 
-# Install PHP extensions
+# PHP extensions
 RUN docker-php-ext-install \
 	mbstring \
 	intl \
@@ -16,3 +20,6 @@ RUN docker-php-ext-install \
 	pdo \
 	pdo_mysql \
 	gd
+RUN pecl install redis && \
+	docker-php-ext-enable \
+	redis
