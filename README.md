@@ -1,6 +1,6 @@
 ## PHP7 fpm alpine 
 
-Image with few additional php extensions, used for automated builds on docker hub
+Image with few additional php extensions and composer
 
 ### Extensions
 
@@ -16,8 +16,7 @@ redis
 
 ### Docker Compose example
 
-CakePHP 3 app.  
-Running this php7-fpm image with nginx, mariadb, redis.
+Running this php7-fpm image with nginx, mariadb, redis. Tested with CakePHP 3 app.
 
 ```
 version: '3'
