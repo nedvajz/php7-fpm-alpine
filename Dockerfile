@@ -12,16 +12,16 @@ RUN apk --no-cache --update add \
 	make
 
 # PHP extensions
-RUN docker-php-ext-install \
-	mbstring \
-	intl \
-	simplexml \
-	pdo \
-	pdo_mysql \
-	gd && \
-	pecl install redis && \
-	docker-php-ext-enable \
-	redis
+RUN docker-php-ext-install mbstring
+RUN docker-php-ext-install intl
+RUN docker-php-ext-install simplexml
+RUN docker-php-ext-install pdo
+RUN docker-php-ext-install pdo_mysql
+RUN docker-php-ext-install gd
+RUN docker-php-ext-install json
+RUN docker-php-ext-install zip
+RUN pecl install redis
+RUN docker-php-ext-enable redis
 
 # Composer
 COPY ./getcomposer.sh /root/getcomposer.sh
