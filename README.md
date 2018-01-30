@@ -12,6 +12,7 @@ pdo
 pdo_mysql
 gd
 redis
+pcntl
 ```
 
 ### Docker Compose example
