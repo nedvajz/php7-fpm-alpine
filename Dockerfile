@@ -9,7 +9,11 @@ RUN apk --no-cache --update add \
 	libpng-dev \
 	autoconf \
 	g++ \
-	make
+	make \
+	py-setuptools
+
+# Install supervisord
+RUN easy_install-2.7 supervisor
 
 # PHP extensions
 RUN docker-php-ext-install mbstring
