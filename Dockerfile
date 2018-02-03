@@ -27,6 +27,8 @@ RUN docker-php-ext-install zip
 RUN docker-php-ext-install pcntl
 RUN pecl install redis
 RUN docker-php-ext-enable redis
+RUN pecl install xdebug
+RUN docker-php-ext-enable xdebug
 
 # Composer
 COPY ./getcomposer.sh /root/getcomposer.sh

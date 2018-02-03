@@ -13,6 +13,7 @@ pdo_mysql
 gd
 redis
 pcntl
+xdebug
 ```
 
 ### Docker Compose example
