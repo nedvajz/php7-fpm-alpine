@@ -1,5 +1,8 @@
 FROM php:7-fpm-alpine
 
+# Imagick
+RUN export CFLAGS="$PHP_CFLAGS" CPPFLAGS="$PHP_CPPFLAGS" LDFLAGS="$PHP_LDFLAGS"
+
 # Dependencies
 RUN apk --no-cache --update add \
     icu-dev \
@@ -10,7 +13,9 @@ RUN apk --no-cache --update add \
 	autoconf \
 	g++ \
 	make \
-	py-setuptools
+	py-setuptools \
+	imagemagick-dev \
+	libtool
 
 # Install supervisord
 RUN easy_install-2.7 supervisor
@@ -29,6 +34,8 @@ RUN pecl install redis
 RUN docker-php-ext-enable redis
 RUN pecl install xdebug
 RUN docker-php-ext-enable xdebug
+RUN pecl install imagick-3.4.3
+RUN docker-php-ext-enable imagick
 
 # Composer
 COPY ./getcomposer.sh /root/getcomposer.sh

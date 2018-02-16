@@ -14,6 +14,7 @@ gd
 redis
 pcntl
 xdebug
+imagick
 ```
 
 ### Docker Compose example
