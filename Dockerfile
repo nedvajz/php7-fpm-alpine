@@ -1,7 +1,8 @@
 FROM php:7-fpm-alpine
 
-# Imagick
+# GD & Imagick
 RUN export CFLAGS="$PHP_CFLAGS" CPPFLAGS="$PHP_CPPFLAGS" LDFLAGS="$PHP_LDFLAGS"
+RUN NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) 
 
 # Dependencies
 RUN apk --no-cache --update add \
@@ -26,7 +27,12 @@ RUN docker-php-ext-install intl
 RUN docker-php-ext-install simplexml
 RUN docker-php-ext-install pdo
 RUN docker-php-ext-install pdo_mysql
-RUN docker-php-ext-install gd
+RUN docker-php-ext-configure gd \
+	--with-gd \
+	--with-freetype-dir=/usr/include/ \
+	--with-png-dir=/usr/include/ \
+	--with-jpeg-dir=/usr/include/
+RUN docker-php-ext-install -j${NPROC} gd
 RUN docker-php-ext-install json
 RUN docker-php-ext-install zip
 RUN docker-php-ext-install pcntl
