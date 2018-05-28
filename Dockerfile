@@ -15,7 +15,8 @@ RUN apk --no-cache --update add \
 	make \
 	py-setuptools \
 	imagemagick-dev \
-	libtool
+	libtool \
+	bash git openssh
 
 # Install supervisord
 RUN easy_install-2.7 supervisor
