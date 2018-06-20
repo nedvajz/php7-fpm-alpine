@@ -16,8 +16,7 @@ RUN apk --no-cache --update add \
 	py-setuptools \
 	imagemagick-dev \
 	libtool \
-	bash git openssh \
-	php-soap
+	bash git openssh
 
 # Install supervisord
 RUN easy_install-2.7 supervisor
