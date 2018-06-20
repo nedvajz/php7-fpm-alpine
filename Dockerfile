@@ -16,7 +16,8 @@ RUN apk --no-cache --update add \
 	py-setuptools \
 	imagemagick-dev \
 	libtool \
-	bash git openssh
+	bash git openssh \
+	php-soap
 
 # Install supervisord
 RUN easy_install-2.7 supervisor
@@ -42,6 +43,7 @@ RUN pecl install xdebug
 RUN docker-php-ext-enable xdebug
 RUN pecl install imagick-3.4.3
 RUN docker-php-ext-enable imagick
+RUN docker-php-ext-install soap
 
 # Composer
 COPY ./getcomposer.sh /root/getcomposer.sh
