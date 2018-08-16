@@ -2,6 +2,7 @@ FROM php:7.1-fpm-alpine
 
 # GD & Imagick
 RUN export CFLAGS="$PHP_CFLAGS" CPPFLAGS="$PHP_CPPFLAGS" LDFLAGS="$PHP_LDFLAGS"
+RUN apk add --no-cache libpng libpng-dev && docker-php-ext-install gd && apk del libpng-dev
 
 # Dependencies
 RUN apk --no-cache --update add \
