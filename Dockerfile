@@ -24,6 +24,7 @@ RUN easy_install-2.7 supervisor
 
 # PHP extensions
 RUN docker-php-ext-install mbstring
+RUN docker-php-ext-install mcrypt
 RUN docker-php-ext-install intl
 RUN docker-php-ext-install simplexml
 RUN docker-php-ext-install pdo
